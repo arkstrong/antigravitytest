@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIRE Simulator | 複利計算シミュレーター</title>
+    <meta name="description" content="将来の自由を手に入れるための、高機能なFIRE（早期リタイア）シミュレーターです。複利の効果を視覚化します。">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>FIRE Simulator</h1>
+            <p class="subtitle">将来の資産推移をシミュレーションし、自由への道筋を描きましょう</p>
+        </header>
+
+        <main class="dashboard">
+            <!-- Sidebar: Inputs -->
+            <aside class="glass-card inputs-card">
+                <div class="input-group">
+                    <label for="initialSavings">現在の貯蓄額 (万円) <span id="initialSavingsVal">500</span></label>
+                    <input type="range" id="initialSavings" min="0" max="5000" step="50" value="500">
+                </div>
+
+                <div class="input-group">
+                    <label for="monthlyContribution">毎月の積立額 (万円) <span id="monthlyContributionVal">15</span></label>
+                    <input type="range" id="monthlyContribution" min="0" max="100" step="1" value="15">
+                </div>
+
+                <div class="input-group">
+                    <label for="annualReturn">年利 (%) <span id="annualReturnVal">5</span></label>
+                    <input type="range" id="annualReturn" min="0" max="15" step="0.1" value="5">
+                </div>
+
+                <div class="input-group">
+                    <label for="annualWithdrawal">目標年間支出 (万円) <span id="annualWithdrawalVal">300</span></label>
+                    <input type="range" id="annualWithdrawal" min="50" max="1000" step="10" value="300">
+                </div>
+
+                <div class="input-group">
+                    <label for="currentAge">現在の年齢 <span id="currentAgeVal">30</span></label>
+                    <input type="range" id="currentAge" min="18" max="70" step="1" value="30">
+                </div>
+
+                <div class="input-group">
+                    <label for="inflationRate">物価上昇率 (%) <span id="inflationRateVal">1.0</span></label>
+                    <input type="range" id="inflationRate" min="0" max="5" step="0.1" value="1.0">
+                </div>
+            </aside>
+
+            <!-- Main: Chart and Stats -->
+            <section class="visualization">
+                <div class="glass-card stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-label">FIRE 達成可能年齢</span>
+                        <span id="fireAge" class="stat-value">--</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">FIRE までの年数</span>
+                        <span id="yearsToFire" class="stat-value">--</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">目標資産額</span>
+                        <span id="targetNetWorth" class="stat-value">--</span>
+                    </div>
+                </div>
+
+                <div class="glass-card chart-card">
+                    <div class="chart-container">
+                        <canvas id="fireChart"></canvas>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
